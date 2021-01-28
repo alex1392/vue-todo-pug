@@ -1,17 +1,19 @@
 <template lang="pug">
-	div
-		input( 
+	.input-group.mb-2
+		input.form-control( 
 			type="text"
 			v-model="contentData"
 		)
-		button(
-			type="button"
-			@click="onSave"
-		) Save
-		button(
-			type="button"
-			@click="onCancel"
-		) Cancel
+		.input-group-append
+			.button-group
+				button.btn.btn-primary(
+					type="button"
+					@click="onSave"
+				) Save
+				button.btn.btn-danger(
+					type="button"
+					@click="onCancel"
+				) Cancel
 </template>
 
 <script>

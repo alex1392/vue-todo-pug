@@ -1,20 +1,17 @@
 <template lang="pug">
-	div
-		input(
-			type="checkbox"
-			:id="id"
-			:checked="checked"
-			@change="onChange"
-		) 
-		| {{ content }}
-		button(
-			type="button"
-			@click="onEdit"
-		) Edit
-		button(
-			type="button"
-			@click="onDelete" 
-		) Delete
+.input-group.mb-2
+  .form-control
+    input(type="checkbox", :id="id", :checked="checked", @change="onChange")
+    label {{ content }}
+  .input-group-append
+    .btn-group
+      button.btn.btn-outline-primary(type="button", @click="onEdit").
+        
+        Edit
+      button.btn.btn-outline-danger#btn-end(type="button", @click="onDelete").
+        
+        Delete
+        
 </template>
 
 <script>
@@ -34,4 +31,23 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+input {
+	width: 25px;
+	height: 25px;
+}
+.input-group-text {
+	background-color: transparent;
+	border: none;
+}
+.form-control {
+	padding: 6px;
+}
+label {
+	vertical-align: super;
+	margin-left: 5px;
+}
+#btn-end {
+	margin-left: 0.5px;
+}
+</style>

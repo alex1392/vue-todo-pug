@@ -1,28 +1,16 @@
 <template lang="pug">
-	#app
-		h1 Todo List
-		h2 {{ listSummary }}
-		ul
-			li(
-				v-for="todo in todoList"
-				:key="todo.id"
-			)
-				TodoItem(
-					:id="todo.id"
-					:content="todo.content"
-					v-model="todo.checked"
-					@delete="DeleteTodo(todo.id)"
-				)
-		
-		label New Todo:
-		input(
-			type="text"
-			v-model.lazy.trim="newTodo"
-		)
-		button(
-			type="button"
-			@click="AddTodo"
-		) Add
+.card#app
+	.card-body
+		h1.card-title Todo List
+		h3 {{ listSummary }}
+		ul.list-group
+			li.list-group-item(v-for="todo in todoList", :key="todo.id")
+				todo-item(:id="todo.id", :content="todo.content", v-model="todo.checked", @delete="DeleteTodo(todo.id)")
+		label(for="add-btn") New Todo:
+		.input-group.mb-3
+			input.form-control(type="text", placeholder="Type your new task here...", v-model.lazy.trim="newTodo")
+			.input-group-append
+				button.btn.btn-outline-primary#add-btn(type="button", @click="AddTodo")  Add
 </template>
 
 <script>
@@ -68,13 +56,22 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
 	color: #2c3e50;
-	margin-top: 60px;
+	margin: 10%;
+}
+.list-group-item {
+	padding: 0;
+	border: none;
+}
+.list-group {
+	list-style-type: none;
+}
+label {
+	margin-top: 15px;
 }
 </style>
